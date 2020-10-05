@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 error_reporting(0);
 include "config/koneksi.php";
 
@@ -87,8 +87,9 @@ $pro = new responden($db);
                             $tb_pertanyaan[$i]=$r['id_pertanyaan'];
                             $status[$i]=$r['status'];   
                             $i++;
-                            $status[$r['id_pertanyaan']]=$r['status'];
+                            // $status[$r['id_pertanyaan']]=$r['status'];
                         }
+                        // var_dump($status); die;
                         $jawaban;
                         $a1;
                         $a2;
@@ -164,17 +165,18 @@ $pro = new responden($db);
                         
 
                         $jawaban=$a1+$a2+$a3+$a4+$a5+$a6+$a7+$a8+$a9+$a10;
+                        // echo($jawaban); die;
                         if ($jawaban>=5) {
                             $x=(1*8.87)+91.13;
                         }
                             else if ($jawaban>=4) {
-                            $x=(1*18.74)+62.5;
+                            $x=(1*18.74)+62.51;
                         }
                            else if ($jawaban>=3) {
                              $x=(1*18.74)+43.76;
                         }
                             else if ($jawaban>=2) {
-                             $x=(1*18.74)+43.76;
+                             $x=(1*18.74)+25;
                         }
                             else if ($jawaban>=1) {
                             $x=(1*18.75)+25;

@@ -11,6 +11,16 @@ class responden{
 	public function __construct($db){
 		$this->conn = $db;
 	}
+
+
+	function jumlahresponden(){
+		$query = "select count(*) as responden from responden";
+		$jumlah = $this->conn->prepare( $query );
+		$jumlah->execute();
+
+		return $jumlah;
+	}
+	
 	
 	function insert(){
 		

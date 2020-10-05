@@ -25,7 +25,7 @@ class kuisioner{
 		}
 		
 	}
-	
+
 	function readAll(){
 
 		$query = "SELECT * FROM ".$this->table_name." ORDER BY id_pertanyaan ASC";

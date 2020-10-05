@@ -2,7 +2,7 @@
 $host="localhost";
 $user='root';
 $pass='';
-$database='gemblak';
+$database='ikm';
 
 $konek = mysqli_connect($host, $user, $pass);
 

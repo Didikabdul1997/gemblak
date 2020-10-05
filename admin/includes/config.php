@@ -2,9 +2,9 @@
 class Config{
 	
 	private $host = "localhost";
-	private $db_name = "gemblak";
+	private $db_name = "ikm";
 	private $username = "root";
-	private $password = "admin";
+	private $password = "";
 	public $conn;
 	
 	public function getConnection(){

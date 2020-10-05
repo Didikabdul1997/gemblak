@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include "includes/config.php";
 $config = new Config();
 $db = $config->getConnection();
@@ -6,8 +7,10 @@ $db = $config->getConnection();
 include_once 'includes/responden.inc.php';
 $eks = new responden($db);
 $stmt = $eks->readAll();
-
 $hasil=0;
+$jml = $eks->jumlahresponden();
+$jml = $jml->fetch();
+$jml = $jml['responden']*100;
 ?>
 <div class="dashboard-wrapper">
             <div class="container-fluid  dashboard-content">
@@ -15,6 +18,7 @@ $hasil=0;
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
                             <h2 class="pageheader-title">DATA HASIL </h2>
+                            
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                         </div>
                     </div>
@@ -26,12 +30,12 @@ $hasil=0;
                                         
 
          <?php
-  
+$tot =0;
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $hasil+=$row['hasil_akhir'];
-    $total=$hasil/300*100;
+    $total=$hasil/$jml*100;
 
-
+    $tot++;
    }
 ?>
                <!-- ============================================================== -->
@@ -39,7 +43,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card center">
-                               <center> <h1 class="card-header">BERDASARKAN HASIL TOTAL <br> DARI 100 RESPONDEN <br> WARGA BOJONEGORO <BR> TENTANG KEPUASAN PARKIR BERLANGGANAN <P> YANG ADA DI BOJONEGORO<BR> 
+                               <center> <h1 class="card-header">BERDASARKAN HASIL TOTAL <br> DARI <?= $tot; ?> RESPONDEN <br> WARGA BOJONEGORO <BR> TENTANG KEPUASAN PARKIR BERLANGGANAN <P> YANG ADA DI BOJONEGORO<BR> 
 
 
                                 <?php if ($total>=81.26) {
